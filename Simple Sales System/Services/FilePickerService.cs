@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Simple_Sales_System.Common;
 
 namespace Simple_Sales_System.Services
 {
@@ -21,14 +22,10 @@ namespace Simple_Sales_System.Services
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    return await Task.Run(() =>
+                    return await Task.Run(async () =>
                     {
                         var bytes=File.ReadAllBytes(filePath);
-                        Image img;
-                        using (var steam = new MemoryStream(bytes))
-                        {
-                            img = Image.FromStream(steam);
-                        }
+                        Image img = await ImageHelper.FromBytesAsync(bytes);
                         return new ImagePickerResult
                         {
                             ImageBytes = bytes,

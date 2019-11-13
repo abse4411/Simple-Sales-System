@@ -28,7 +28,7 @@ namespace TestConsole
             Order order = new Order
             {
                 Id=0,
-                Model = "DSA-123",
+                Model = "OALY",
                 CustomerName = "US",
                 PhoneNumber = "13244536789",
                 Quantity = 2,
