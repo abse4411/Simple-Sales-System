@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple Sales System", "Simple Sales System\Simple Sales System.csproj", "{79BE1D22-6ED1-46BF-8EE9-8C3821D75ED4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{F7BB8616-752F-4F1D-ABFE-534BB87CF869}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79BE1D22-6ED1-46BF-8EE9-8C3821D75ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79BE1D22-6ED1-46BF-8EE9-8C3821D75ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79BE1D22-6ED1-46BF-8EE9-8C3821D75ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79BE1D22-6ED1-46BF-8EE9-8C3821D75ED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7BB8616-752F-4F1D-ABFE-534BB87CF869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7BB8616-752F-4F1D-ABFE-534BB87CF869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7BB8616-752F-4F1D-ABFE-534BB87CF869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7BB8616-752F-4F1D-ABFE-534BB87CF869}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {18F6A2F3-8074-40D7-854F-22CE7D950E8F}
+	EndGlobalSection
+EndGlobal
