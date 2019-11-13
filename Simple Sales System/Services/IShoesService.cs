@@ -9,9 +9,10 @@ namespace Simple_Sales_System.Services
 {
     public interface IShoesService
     {
+        Task<Shoes> GetShoesAsync(string id);
         Task<IList<Shoes>> GetShoesListAsync();
         Task<int> AddShoesAsync(Shoes shoes);
-        Task<int> DeleteShoesAsync(int id);
+        Task<int> DeleteShoesAsync(string id);
         Task<int> UpdateShoesAsync(Shoes shoes);
     }
 }

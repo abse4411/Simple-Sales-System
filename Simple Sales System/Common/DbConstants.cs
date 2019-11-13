@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simple_Sales_System.Services
+namespace Simple_Sales_System.Common
 {
     static class DbConstants
     {

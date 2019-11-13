@@ -6,12 +6,40 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Simple_Sales_System.Common;
 using Simple_Sales_System.Data;
 
 namespace Simple_Sales_System.Services
 {
     public class ShoesService: IShoesService
     {
+        public async Task<Shoes> GetShoesAsync(string id)
+        {
+            return await Task.Run(() =>
+            {
+                string sql = "select * from Shoes where Model=@model";
+                SqlParameter model = new SqlParameter("@model", SqlDbType.VarChar) { Value = id };
+                Shoes shoes = null;
+                using (SqlConnection connection = new SqlConnection(DbConstants.ConnectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.Add(model);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                shoes = CreateShoesFromReader(reader);
+                                break;
+                            }
+                        }
+                    }
+                }
+                return shoes;
+            });
+        }
+
         public async Task<IList<Shoes>> GetShoesListAsync()
         {
             return await Task.Run(() =>
@@ -27,14 +55,7 @@ namespace Simple_Sales_System.Services
                         {
                             while (reader.Read())
                             {
-                                list.Add(new Shoes
-                                {
-                                    Model = reader.GetString(0),
-                                    Origin = reader.GetString(1),
-                                    Price = reader.GetDouble(2),
-                                    Stocks = reader.GetInt32(3),
-                                    Image = reader.GetSqlBinary(4).IsNull ? null : reader.GetSqlBinary(4).Value
-                                });
+                                list.Add(CreateShoesFromReader(reader));
                             }
                         }
                     }
@@ -47,46 +68,54 @@ namespace Simple_Sales_System.Services
         {
             return await Task.Run(() =>
             {
-                string sql = "insert Shoes(Model,Origin,Price,Stocks,Image) values(@model,@origin,@price,@stocks,@image)";
-                SqlParameter model = new SqlParameter("@model", SqlDbType.VarChar) {Value = shoes.Model};
-                SqlParameter origin = new SqlParameter("@origin", SqlDbType.VarChar) {Value = shoes.Origin};
-                SqlParameter price =new SqlParameter("@price", SqlDbType.VarChar) {Value = shoes.Price};
-                SqlParameter stocks = new SqlParameter("@stocks", SqlDbType.VarChar) {Value = shoes.Stocks};
-                SqlParameter image = new SqlParameter("@image", SqlDbType.VarChar) {Value = shoes.Image};
-                IList<Shoes> list = new List<Shoes>();
-                using (SqlConnection connection = new SqlConnection(DbConstants.ConnectionString))
-                {
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                list.Add(new Shoes
-                                {
-                                    Model = reader.GetString(0),
-                                    Origin = reader.GetString(1),
-                                    Price = reader.GetDouble(2),
-                                    Stocks = reader.GetInt32(3),
-                                    Image = reader.GetSqlBinary(4).IsNull ? null : reader.GetSqlBinary(4).Value
-                                });
-                            }
-                        }
-                    }
-                }
-                return 1;
+                string sql = "insert into Shoes values ( @model,@origin,@price,@stocks,@image )";
+                var parameters = CreateParmsFromShoes(shoes);
+                return SqlHelper.ExecuteNonQuery(DbConstants.ConnectionString,sql,CommandType.Text, parameters);
             });
         }
 
-        public Task<int> DeleteShoesAsync(int id)
+        public async Task<int> DeleteShoesAsync(string id)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() =>
+            {
+                string sql = "delete from Shoes where Model=@model";
+                SqlParameter model = new SqlParameter("@model", SqlDbType.VarChar) { Value = id };
+                return SqlHelper.ExecuteNonQuery(DbConstants.ConnectionString, sql, CommandType.Text, model);
+            });
         }
 
-        public Task<int> UpdateShoesAsync(Shoes shoes)
+        public async Task<int> UpdateShoesAsync(Shoes shoes)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() =>
+            {
+                string sql = "update Shoes set Origin=@origin,Price=@price,Stocks=@stocks,Image=@image where Model=@model";
+                var parameters = CreateParmsFromShoes(shoes);
+                return SqlHelper.ExecuteNonQuery(DbConstants.ConnectionString, sql, CommandType.Text, parameters);
+            });
+        }
+
+        private static SqlParameter[] CreateParmsFromShoes(Shoes shoes)
+        {
+            const int n=5;
+            SqlParameter[] parameters = new SqlParameter[n];
+            parameters[0] = new SqlParameter("@model", SqlDbType.VarChar) { Value = shoes.Model };
+            parameters[1] = new SqlParameter("@origin", SqlDbType.VarChar) { Value = shoes.Origin };
+            parameters[2] = new SqlParameter("@price", SqlDbType.Float) { Value = shoes.Price };
+            parameters[3] = new SqlParameter("@stocks", SqlDbType.Int) { Value = shoes.Stocks };
+            parameters[4] = new SqlParameter("@image", SqlDbType.VarBinary) { Value = shoes.Image ?? (object)DBNull.Value };
+            return parameters;
+        }
+
+        private static Shoes CreateShoesFromReader(SqlDataReader reader)
+        {
+            return new Shoes
+            {
+                Model = reader.GetString(0),
+                Origin = reader.GetString(1),
+                Price = reader.GetDouble(2),
+                Stocks = reader.GetInt32(3),
+                Image = reader.GetSqlBinary(4).IsNull ? null : reader.GetSqlBinary(4).Value
+            };
         }
     }
 }
