@@ -241,7 +241,8 @@
             this.MaximumSize = new System.Drawing.Size(595, 464);
             this.MinimumSize = new System.Drawing.Size(595, 464);
             this.Name = "OrderForm";
-            this.Text = "OrderForm";
+            this.ShowIcon = false;
+            this.Text = "Confirm order";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
