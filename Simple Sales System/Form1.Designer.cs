@@ -35,7 +35,13 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.ChooseBtn = new System.Windows.Forms.Button();
             this.OrderList = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ClearBtn = new System.Windows.Forms.Button();
             this.BuyBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,12 +52,6 @@
             this.RefreshBtn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.ShoesList = new System.Windows.Forms.ListView();
-            this.ClearBtn = new System.Windows.Forms.Button();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -64,7 +64,7 @@
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(10, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(214, 219);
+            this.pictureBox1.Size = new System.Drawing.Size(214, 214);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -72,7 +72,7 @@
             // SaveBtn
             // 
             this.SaveBtn.Enabled = false;
-            this.SaveBtn.Location = new System.Drawing.Point(139, 245);
+            this.SaveBtn.Location = new System.Drawing.Point(139, 236);
             this.SaveBtn.Margin = new System.Windows.Forms.Padding(0);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(85, 116);
@@ -99,7 +99,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(289, 203);
+            this.textBox4.Location = new System.Drawing.Point(289, 198);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(253, 25);
@@ -108,7 +108,7 @@
             // ChooseBtn
             // 
             this.ChooseBtn.Enabled = false;
-            this.ChooseBtn.Location = new System.Drawing.Point(10, 245);
+            this.ChooseBtn.Location = new System.Drawing.Point(10, 236);
             this.ChooseBtn.Margin = new System.Windows.Forms.Padding(0);
             this.ChooseBtn.Name = "ChooseBtn";
             this.ChooseBtn.Size = new System.Drawing.Size(122, 55);
@@ -129,12 +129,32 @@
             this.columnHeader5});
             this.OrderList.HideSelection = false;
             this.OrderList.Location = new System.Drawing.Point(15, 21);
-            this.OrderList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OrderList.Margin = new System.Windows.Forms.Padding(2);
             this.OrderList.Name = "OrderList";
             this.OrderList.Size = new System.Drawing.Size(511, 256);
             this.OrderList.TabIndex = 8;
             this.OrderList.UseCompatibleStateImageBehavior = false;
             this.OrderList.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Order Id";
+            this.columnHeader1.Width = 108;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Customer Name";
+            this.columnHeader3.Width = 131;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Phone number";
+            this.columnHeader4.Width = 130;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Quantity";
+            this.columnHeader5.Width = 96;
             // 
             // panel1
             // 
@@ -153,10 +173,30 @@
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(556, 361);
             this.panel1.TabIndex = 9;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(289, 10);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(253, 25);
+            this.textBox1.TabIndex = 2;
+            // 
+            // ClearBtn
+            // 
+            this.ClearBtn.Enabled = false;
+            this.ClearBtn.Location = new System.Drawing.Point(10, 297);
+            this.ClearBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.ClearBtn.Name = "ClearBtn";
+            this.ClearBtn.Size = new System.Drawing.Size(122, 55);
+            this.ClearBtn.TabIndex = 7;
+            this.ClearBtn.Text = "Clear Image";
+            this.ClearBtn.UseVisualStyleBackColor = true;
+            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
             // 
             // BuyBtn
             // 
@@ -164,7 +204,7 @@
             this.BuyBtn.Enabled = false;
             this.BuyBtn.Font = new System.Drawing.Font("SimSun", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.BuyBtn.ForeColor = System.Drawing.Color.White;
-            this.BuyBtn.Location = new System.Drawing.Point(233, 245);
+            this.BuyBtn.Location = new System.Drawing.Point(233, 236);
             this.BuyBtn.Margin = new System.Windows.Forms.Padding(0);
             this.BuyBtn.Name = "BuyBtn";
             this.BuyBtn.Size = new System.Drawing.Size(309, 116);
@@ -176,7 +216,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(229, 209);
+            this.label4.Location = new System.Drawing.Point(229, 201);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 15);
@@ -206,7 +246,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(230, 10);
+            this.label1.Location = new System.Drawing.Point(230, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 15);
@@ -220,9 +260,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.OrderList);
             this.groupBox1.Location = new System.Drawing.Point(10, 365);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(538, 287);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
@@ -234,7 +274,7 @@
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(689, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(556, 659);
             this.panel2.TabIndex = 11;
@@ -258,7 +298,7 @@
             this.panel3.Controls.Add(this.RefreshBtn);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(689, 659);
             this.panel3.TabIndex = 14;
@@ -270,7 +310,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ShoesList.HideSelection = false;
             this.ShoesList.Location = new System.Drawing.Point(11, 9);
-            this.ShoesList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ShoesList.Margin = new System.Windows.Forms.Padding(2);
             this.ShoesList.MultiSelect = false;
             this.ShoesList.Name = "ShoesList";
             this.ShoesList.ShowItemToolTips = true;
@@ -278,46 +318,6 @@
             this.ShoesList.TabIndex = 14;
             this.ShoesList.UseCompatibleStateImageBehavior = false;
             this.ShoesList.SelectedIndexChanged += new System.EventHandler(this.ShoesList_SelectedIndexChanged);
-            // 
-            // ClearBtn
-            // 
-            this.ClearBtn.Enabled = false;
-            this.ClearBtn.Location = new System.Drawing.Point(10, 306);
-            this.ClearBtn.Margin = new System.Windows.Forms.Padding(0);
-            this.ClearBtn.Name = "ClearBtn";
-            this.ClearBtn.Size = new System.Drawing.Size(122, 55);
-            this.ClearBtn.TabIndex = 7;
-            this.ClearBtn.Text = "Clear Image";
-            this.ClearBtn.UseVisualStyleBackColor = true;
-            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Order Id";
-            this.columnHeader1.Width = 108;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Customer Name";
-            this.columnHeader3.Width = 131;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Phone number";
-            this.columnHeader4.Width = 130;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Quantity";
-            this.columnHeader5.Width = 96;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(289, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(253, 25);
-            this.textBox1.TabIndex = 2;
             // 
             // Form1
             // 
