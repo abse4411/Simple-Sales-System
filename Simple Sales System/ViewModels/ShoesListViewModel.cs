@@ -61,6 +61,8 @@ namespace Simple_Sales_System.ViewModels
                 ShoesList.Items.Add(item);
             }
             ShoesList.EndUpdate();
+            DetailsViewModel.ClearDetail();
+            OrderListViewModel.ClearList();
         }
 
         public async Task SelectItemAsync(int index)

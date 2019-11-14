@@ -56,7 +56,7 @@ namespace Simple_Sales_System.ViewModels
 
         public void ClearDetail()
         {
-            EditableItem = new ShoesViewModel();
+            EditableItem.Merge(new ShoesViewModel());
             ImageSource = null;
         }
 

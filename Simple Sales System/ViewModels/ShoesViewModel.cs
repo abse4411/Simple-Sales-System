@@ -48,11 +48,11 @@ namespace Simple_Sales_System.ViewModels
         {
             if (source is ShoesViewModel model)
             {
-                _model = model._model;
-                _origin = model._origin;
-                _price = model._price;
-                _stocks = model._stocks;
-                _image = model._image;
+                Model = model._model;
+                Origin = model._origin;
+                Price = model._price;
+                Stocks = model._stocks;
+                Image = model._image;
             }
         }
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Simple_Sales_System.Data;
 using Simple_Sales_System.Services;
 using Simple_Sales_System.ViewModels;
 
@@ -34,7 +35,8 @@ namespace Simple_Sales_System
                 ControlUpdateMode = ControlUpdateMode.OnPropertyChanged
             });
             textBox1.DataBindings.Add(new Binding(nameof(textBox1.Text), _viewModel.DetailsViewModel.EditableItem,
-                nameof(_viewModel.DetailsViewModel.EditableItem.Model), true, DataSourceUpdateMode.Never)
+                nameof(_viewModel.DetailsViewModel.EditableItem.Model),
+                true, DataSourceUpdateMode.Never)
             {
                 ControlUpdateMode = ControlUpdateMode.OnPropertyChanged
             });
@@ -106,7 +108,10 @@ namespace Simple_Sales_System
 
         private void Buy_Click(object sender, EventArgs e)
         {
-
+            using (OrderForm form = new OrderForm( _viewModel.DetailsViewModel.EditableItem.ToShoes()))
+            {
+                form.ShowDialog(this);
+            }
         }
 
         //<div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

@@ -24,11 +24,6 @@ namespace Simple_Sales_System.ViewModels
 
         public async Task LoadAsync(string model)
         {
-            if (string.IsNullOrWhiteSpace(model))
-            {
-                ClearList();
-                return;
-            }
             IList<Order> orderList;
             try
             {
@@ -39,15 +34,6 @@ namespace Simple_Sales_System.ViewModels
                 _dialogService.ShowException(e);
                 return;
             }
-            var items =await CreateListViewItemFrom(orderList);
-            OrderList.Items.Clear();
-            OrderList.BeginUpdate();
-            foreach (var item in items)
-            {
-                OrderList.Items.Add(item);
-            }
-            OrderList.EndUpdate();
-            OrderList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         public void ClearList()
@@ -60,13 +46,18 @@ namespace Simple_Sales_System.ViewModels
             return await Task.Run(() =>
             {
                 var result = new List<ListViewItem>();
+                int imageIndex = 0;
                 foreach (var order in list)
                 {
-                    ListViewItem item = new ListViewItem(order.Id.ToString());
+                    ListViewItem item = new ListViewItem(order.Model)
+                    {
+                        ImageIndex = imageIndex++
+                    };
+                    item.SubItems.Add(order.Model);
                     item.SubItems.Add(order.CustomerName);
                     item.SubItems.Add(order.PhoneNumber);
                     item.SubItems.Add(order.Quantity.ToString());
-                    item.ToolTipText = item.Text;
+                    item.ToolTipText = order.Model;
                     result.Add(item);
                 }
                 return result;
