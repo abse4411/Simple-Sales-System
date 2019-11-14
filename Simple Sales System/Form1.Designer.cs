@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SaveBtn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.ChooseBtn = new System.Windows.Forms.Button();
             this.OrderList = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Buy = new System.Windows.Forms.Button();
+            this.BuyBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,15 +69,16 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // SaveBtn
             // 
-            this.button1.Location = new System.Drawing.Point(150, 205);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 32);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SaveBtn.Enabled = false;
+            this.SaveBtn.Location = new System.Drawing.Point(150, 205);
+            this.SaveBtn.Name = "SaveBtn";
+            this.SaveBtn.Size = new System.Drawing.Size(60, 32);
+            this.SaveBtn.TabIndex = 1;
+            this.SaveBtn.Text = "Save";
+            this.SaveBtn.UseVisualStyleBackColor = true;
+            this.SaveBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -111,15 +112,16 @@
             this.textBox4.Size = new System.Drawing.Size(253, 25);
             this.textBox4.TabIndex = 5;
             // 
-            // button2
+            // ChooseBtn
             // 
-            this.button2.Location = new System.Drawing.Point(10, 205);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(66, 32);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Choose";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.ChooseBtn.Enabled = false;
+            this.ChooseBtn.Location = new System.Drawing.Point(10, 205);
+            this.ChooseBtn.Name = "ChooseBtn";
+            this.ChooseBtn.Size = new System.Drawing.Size(66, 32);
+            this.ChooseBtn.TabIndex = 6;
+            this.ChooseBtn.Text = "Choose";
+            this.ChooseBtn.UseVisualStyleBackColor = true;
+            this.ChooseBtn.Click += new System.EventHandler(this.button2_Click);
             // 
             // OrderList
             // 
@@ -143,10 +145,10 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.ClearBtn);
-            this.panel1.Controls.Add(this.Buy);
+            this.panel1.Controls.Add(this.BuyBtn);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.SaveBtn);
+            this.panel1.Controls.Add(this.ChooseBtn);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -162,17 +164,19 @@
             this.panel1.Size = new System.Drawing.Size(556, 361);
             this.panel1.TabIndex = 9;
             // 
-            // Buy
+            // BuyBtn
             // 
-            this.Buy.BackColor = System.Drawing.Color.DarkOrange;
-            this.Buy.Font = new System.Drawing.Font("SimSun", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Buy.Location = new System.Drawing.Point(10, 245);
-            this.Buy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Buy.Name = "Buy";
-            this.Buy.Size = new System.Drawing.Size(537, 109);
-            this.Buy.TabIndex = 6;
-            this.Buy.Text = "Buy";
-            this.Buy.UseVisualStyleBackColor = false;
+            this.BuyBtn.BackColor = System.Drawing.Color.DarkOrange;
+            this.BuyBtn.Enabled = false;
+            this.BuyBtn.Font = new System.Drawing.Font("SimSun", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BuyBtn.Location = new System.Drawing.Point(10, 245);
+            this.BuyBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BuyBtn.Name = "BuyBtn";
+            this.BuyBtn.Size = new System.Drawing.Size(537, 109);
+            this.BuyBtn.TabIndex = 6;
+            this.BuyBtn.Text = "Buy";
+            this.BuyBtn.UseVisualStyleBackColor = false;
+            this.BuyBtn.Click += new System.EventHandler(this.Buy_Click);
             // 
             // label4
             // 
@@ -282,6 +286,7 @@
             // 
             // ClearBtn
             // 
+            this.ClearBtn.Enabled = false;
             this.ClearBtn.Location = new System.Drawing.Point(84, 205);
             this.ClearBtn.Name = "ClearBtn";
             this.ClearBtn.Size = new System.Drawing.Size(60, 32);
@@ -333,19 +338,19 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button ChooseBtn;
         private System.Windows.Forms.ListView OrderList;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Buy;
+        private System.Windows.Forms.Button BuyBtn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button RefreshBtn;

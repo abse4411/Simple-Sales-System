@@ -81,12 +81,32 @@ namespace Simple_Sales_System
         private async void ShoesList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ShoesList.SelectedItems.Count > 0)
+            {
                 await _viewModel.SelectItemAsync(ShoesList.SelectedIndices[0]);
+                ChooseBtn.Enabled = true;
+                ClearBtn.Enabled = true;
+                SaveBtn.Enabled = true;
+                BuyBtn.Enabled = true;
+            }
+            else
+            {
+                _viewModel.DetailsViewModel.ClearDetail();
+                _viewModel.OrderListViewModel.ClearList();
+                ChooseBtn.Enabled = false;
+                ClearBtn.Enabled = false;
+                SaveBtn.Enabled = false;
+                BuyBtn.Enabled = false;
+            }
         }
 
         private void ClearBtn_Click(object sender, EventArgs e)
         {
             _viewModel.DetailsViewModel.ResetPicture();
+        }
+
+        private void Buy_Click(object sender, EventArgs e)
+        {
+
         }
 
         //<div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
