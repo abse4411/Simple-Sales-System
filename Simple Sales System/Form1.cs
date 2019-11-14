@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using Simple_Sales_System.ViewModels;
 
@@ -16,6 +17,7 @@ namespace Simple_Sales_System
             InitializeComponent();
             _viewModel = new ShoesListViewModel(ShoesList,OrderList);
             SetBindings();
+            _viewModel.RefreshAsync();
         }
 
         private void SetBindings()
@@ -56,6 +58,7 @@ namespace Simple_Sales_System
             if (ShoesList.SelectedItems.Count > 0)
                 if (await _viewModel.DetailsViewModel.SaveAsync())
                 {
+                    ShoesList.SelectedItems.Clear();
                     await _viewModel.RefreshAsync();
                 }
         }
@@ -97,12 +100,14 @@ namespace Simple_Sales_System
             _viewModel.DetailsViewModel.ResetPicture();
         }
 
-        private void Buy_Click(object sender, EventArgs e)
+        private async void Buy_Click(object sender, EventArgs e)
         {
             using (OrderForm form = new OrderForm( _viewModel.DetailsViewModel.EditableItem.ToShoes()))
             {
                 form.ShowDialog(this);
             }
+
+            await _viewModel.RefreshAsync();
         }
 
         //<div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

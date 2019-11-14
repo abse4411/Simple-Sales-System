@@ -54,6 +54,19 @@ namespace Simple_Sales_System.ViewModels
                 ClearDetail();
         }
 
+        public async Task LoadAsync(string id)
+        {
+            try
+            {
+                var shoes = await _shoesService.GetShoesAsync(id);
+                await LoadAsync(shoes);
+            }
+            catch (Exception e)
+            {
+                _dialogService.ShowException(e);
+            }
+        }
+
         public void ClearDetail()
         {
             EditableItem.Merge(new ShoesViewModel());
@@ -89,11 +102,16 @@ namespace Simple_Sales_System.ViewModels
             catch (Exception e)
             {
                 _dialogService.ShowException(e);
+                return false;
             }
             if (isSuccessful)
             {
                 ImageSource = await ImageHelper.FromBytesAsync(shoes.Image);
                 _dialogService.ShowMessage("Congratulations", "Save successfully");
+            }
+            else
+            {
+                _dialogService.ShowMessage("Failed", "Unknown error");
             }
 
             return isSuccessful;
@@ -104,12 +122,12 @@ namespace Simple_Sales_System.ViewModels
             const string title = "Warning";
             if (string.IsNullOrWhiteSpace(EditableItem.Model))
             {
-                _dialogService.ShowWarning(title, "Model can be null");
+                _dialogService.ShowWarning(title, "Model can not be null");
                 return false;
             }
             if (string.IsNullOrWhiteSpace(EditableItem.Origin))
             {
-                _dialogService.ShowWarning(title, "Origin can be null");
+                _dialogService.ShowWarning(title, "Origin can not be null");
                 return false;
             }
             if (EditableItem.Price <= 0d)
@@ -119,7 +137,7 @@ namespace Simple_Sales_System.ViewModels
             }
             if (EditableItem.Stocks <= 0)
             {
-                _dialogService.ShowWarning(title, "Price must be great than 0");
+                _dialogService.ShowWarning(title, "Stocks must be great than 0");
                 return false;
             }
             return true;

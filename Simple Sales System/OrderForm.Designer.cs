@@ -35,18 +35,18 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -121,23 +121,14 @@
             this.panel1.Size = new System.Drawing.Size(577, 242);
             this.panel1.TabIndex = 6;
             // 
-            // label1
+            // label5
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(243, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 15);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Model";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(243, 78);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Origin";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(243, 204);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 15);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Stocks";
             // 
             // label3
             // 
@@ -148,14 +139,23 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Price";
             // 
-            // label5
+            // label2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(243, 204);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 15);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Stocks";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(243, 78);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Origin";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(243, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 15);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Model";
             // 
             // panel2
             // 
@@ -173,32 +173,26 @@
             this.panel2.Size = new System.Drawing.Size(577, 175);
             this.panel2.TabIndex = 7;
             // 
-            // button2
+            // textBox7
             // 
-            this.button2.Location = new System.Drawing.Point(424, 129);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(141, 37);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Cancle";
-            this.button2.UseVisualStyleBackColor = true;
+            this.textBox7.Location = new System.Drawing.Point(117, 87);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(448, 25);
+            this.textBox7.TabIndex = 13;
             // 
-            // label4
+            // textBox6
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 15);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Your Name";
+            this.textBox6.Location = new System.Drawing.Point(117, 50);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(448, 25);
+            this.textBox6.TabIndex = 12;
             // 
-            // label6
+            // textBox5
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 53);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 15);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Phone number";
+            this.textBox5.Location = new System.Drawing.Point(117, 12);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(448, 25);
+            this.textBox5.TabIndex = 11;
             // 
             // label7
             // 
@@ -209,26 +203,33 @@
             this.label7.TabIndex = 9;
             this.label7.Text = "Quantity";
             // 
-            // textBox5
+            // label6
             // 
-            this.textBox5.Location = new System.Drawing.Point(117, 12);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(448, 25);
-            this.textBox5.TabIndex = 11;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 53);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 15);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Phone number";
             // 
-            // textBox6
+            // label4
             // 
-            this.textBox6.Location = new System.Drawing.Point(117, 50);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(448, 25);
-            this.textBox6.TabIndex = 12;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 15);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Your Name";
             // 
-            // textBox7
+            // button2
             // 
-            this.textBox7.Location = new System.Drawing.Point(117, 87);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(448, 25);
-            this.textBox7.TabIndex = 13;
+            this.button2.Location = new System.Drawing.Point(424, 129);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(141, 37);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Cancle";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // OrderForm
             // 
