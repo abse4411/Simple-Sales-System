@@ -41,7 +41,7 @@ namespace Simple_Sales_System.ViewModels
 
         public async Task LoadAsync(Shoes shoes)
         {
-            if (shoes != null) ;
+            if (shoes != null)
             {
                 EditableItem.Model = shoes.Model;
                 EditableItem.Origin = shoes.Origin;

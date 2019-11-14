@@ -14,39 +14,45 @@ namespace Simple_Sales_System
 {
     public partial class Form1 : Form
     {
-        private readonly ShoesDetailsViewModel _viewModel;
-        private FilePickerService _filePickerService;
-        private ShoesService _shoesService;
-        private DialogService dialogService;
+        //private readonly ShoesDetailsViewModel _viewModel;
+        //private FilePickerService _filePickerService;
+        //private ShoesService _shoesService;
+        //private DialogService dialogService;
+        private ShoesListViewModel _viewModel;
         public Form1()
         {
             InitializeComponent();
-            _filePickerService = new FilePickerService();
-            _shoesService=new ShoesService();
-            dialogService=new DialogService();
-            _viewModel =new ShoesDetailsViewModel(_shoesService, _filePickerService, dialogService);
-            pictureBox1.DataBindings.Add(new Binding(nameof(pictureBox1.Image), _viewModel, nameof(_viewModel.ImageSource),
+            _viewModel = new ShoesListViewModel(ShoesList);
+            SetBindings();
+        }
+
+        private void SetBindings()
+        {
+            pictureBox1.DataBindings.Add(new Binding(nameof(pictureBox1.Image), _viewModel.DetailsViewModel, nameof(_viewModel.DetailsViewModel.ImageSource),
+                true, DataSourceUpdateMode.OnPropertyChanged)
+            {
+                ControlUpdateMode = ControlUpdateMode.OnPropertyChanged
+            });
+            textBox1.DataBindings.Add(new Binding(nameof(textBox1.Text), _viewModel.DetailsViewModel.EditableItem, 
+                nameof(_viewModel.DetailsViewModel.EditableItem.Model), true, DataSourceUpdateMode.Never)
+            {
+                ControlUpdateMode = ControlUpdateMode.OnPropertyChanged
+            });
+            textBox2.DataBindings.Add(new Binding(nameof(textBox2.Text), _viewModel.DetailsViewModel.EditableItem, 
+                nameof(_viewModel.DetailsViewModel.EditableItem.Origin),
                 true, DataSourceUpdateMode.Never)
             {
                 ControlUpdateMode = ControlUpdateMode.OnPropertyChanged
             });
-            textBox1.DataBindings.Add(new Binding(nameof(textBox1.Text), _viewModel.EditableItem, nameof(_viewModel.EditableItem.Model),
-                true, DataSourceUpdateMode.OnPropertyChanged)
+            textBox3.DataBindings.Add(new Binding(nameof(textBox3.Text), _viewModel.DetailsViewModel.EditableItem,
+                nameof(_viewModel.DetailsViewModel.EditableItem.Price),
+                true, DataSourceUpdateMode.Never)
             {
                 ControlUpdateMode = ControlUpdateMode.OnPropertyChanged
             });
-            textBox2.DataBindings.Add(new Binding(nameof(textBox2.Text), _viewModel.EditableItem, nameof(_viewModel.EditableItem.Origin),
-                true, DataSourceUpdateMode.OnPropertyChanged)
-            {
-                ControlUpdateMode = ControlUpdateMode.OnPropertyChanged
-            });
-            textBox3.DataBindings.Add(new Binding(nameof(textBox3.Text), _viewModel.EditableItem, nameof(_viewModel.EditableItem.Price),
-                true, DataSourceUpdateMode.OnPropertyChanged)
-            {
-                ControlUpdateMode = ControlUpdateMode.OnPropertyChanged
-            });
-            textBox4.DataBindings.Add(new Binding(nameof(textBox4.Text), _viewModel.EditableItem, nameof(_viewModel.EditableItem.Stocks),
-                true, DataSourceUpdateMode.OnPropertyChanged)
+            textBox4.DataBindings.Add(new Binding(nameof(textBox4.Text), _viewModel.DetailsViewModel.EditableItem, 
+                nameof(_viewModel.DetailsViewModel.EditableItem.Stocks),
+                true, DataSourceUpdateMode.Never)
             {
                 ControlUpdateMode = ControlUpdateMode.OnPropertyChanged
             });
@@ -54,27 +60,32 @@ namespace Simple_Sales_System
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            await _viewModel.SaveAsync();
+            await _viewModel.DetailsViewModel.SaveAsync();
         }
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            await _viewModel.EditPicture();
+            await _viewModel.DetailsViewModel.EditPicture();
         }
 
-        private async void button3_Click(object sender, EventArgs e)
+        private  void button3_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var shose =await _shoesService.GetShoesAsync("ABC-123");
-                await _viewModel.LoadAsync(shose);
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message, String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    var shose = await _shoesService.GetShoesAsync("ABC-123");
+            //    await _viewModel.LoadAsync(shose);
+            //}
+            //catch (Exception exception)
+            //{
+            //    MessageBox.Show(exception.Message, String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+
         }
 
+        private async void Refresh_Click(object sender, EventArgs e)
+        {
+            await _viewModel.RefreshAsync();
+        }
     }
 
     public class ViewModel : ObservableObject
