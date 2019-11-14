@@ -35,6 +35,32 @@ namespace Simple_Sales_System.Services
             });
         }
 
+        public async Task<IList<Order>> GetOrderListByModel(string model)
+        {
+            return await Task.Run(() =>
+            {
+                string sql = "select * from Orders where Model=@model";
+                SqlParameter modelParam = new SqlParameter("@model", SqlDbType.VarChar) { Value = model };
+                IList<Order> list = new List<Order>();
+                using (SqlConnection connection = new SqlConnection(DbConstants.ConnectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.Add(modelParam);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                list.Add(CreateShoesFromOrder(reader));
+                            }
+                        }
+                    }
+                }
+                return list;
+            });
+        }
+
         public Task<int> DeleteOrderAsync(int id)
         {
             throw new NotImplementedException();

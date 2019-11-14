@@ -12,6 +12,7 @@ namespace Simple_Sales_System.Services
         Task<Order> GetOrderAsync(int id);
         Task<IList<Order>> GetOrderListAsync();
         Task<int> AddOrderAsync(Order order);
+        Task<IList<Order>> GetOrderListByModel(string model);
         Task<int> DeleteOrderAsync(int id);
         Task<int> UpdateOrderAsync(Order order);
     }

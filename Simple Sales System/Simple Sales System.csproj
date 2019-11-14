@@ -68,6 +68,7 @@
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\ShoesService.cs" />
     <Compile Include="ViewModels\ObservableObject.cs" />
+    <Compile Include="ViewModels\OrderListViewModel.cs" />
     <Compile Include="ViewModels\ShoesDetailsViewModel.cs" />
     <Compile Include="ViewModels\ShoesListViewModel.cs" />
     <Compile Include="ViewModels\ShoesViewModel.cs" />
@@ -96,6 +97,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="image.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

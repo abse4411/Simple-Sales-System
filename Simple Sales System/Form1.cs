@@ -22,7 +22,7 @@ namespace Simple_Sales_System
         public Form1()
         {
             InitializeComponent();
-            _viewModel = new ShoesListViewModel(ShoesList);
+            _viewModel = new ShoesListViewModel(ShoesList,OrderList);
             SetBindings();
         }
 
@@ -70,7 +70,7 @@ namespace Simple_Sales_System
         private async void button2_Click(object sender, EventArgs e)
         {
             if (ShoesList.SelectedItems.Count > 0)
-                await _viewModel.DetailsViewModel.EditPicture();
+                await _viewModel.DetailsViewModel.PickPictureAsync();
         }
 
         private async void Refresh_Click(object sender, EventArgs e)
@@ -83,6 +83,13 @@ namespace Simple_Sales_System
             if (ShoesList.SelectedItems.Count > 0)
                 await _viewModel.SelectItemAsync(ShoesList.SelectedIndices[0]);
         }
+
+        private void ClearBtn_Click(object sender, EventArgs e)
+        {
+            _viewModel.DetailsViewModel.ResetPicture();
+        }
+
+        //<div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     }
 
 }

@@ -15,17 +15,21 @@ namespace Simple_Sales_System.ViewModels
     {
         private readonly IShoesService _shoesService;
         private readonly IFilePickerService _filePickerService;
+        private readonly IOrderService _orderService;
         private readonly IDialogService _dialogService;
         private IList<Shoes> _shoesList;
         public ShoesDetailsViewModel DetailsViewModel { get; }
+        public OrderListViewModel OrderListViewModel { get; }
         public ListView ShoesList { get; }
 
-        public ShoesListViewModel(ListView shoesList)
+        public ShoesListViewModel(ListView shoesList, ListView orderList)
         {
             _shoesService = new ShoesService();
             _filePickerService = new FilePickerService();
+            _orderService=new OrderService();
             _dialogService = new DialogService();
             DetailsViewModel = new ShoesDetailsViewModel(_shoesService, _filePickerService, _dialogService);
+            OrderListViewModel=new OrderListViewModel(orderList, _orderService,_dialogService);
             ShoesList = shoesList;
         }
 
@@ -43,14 +47,15 @@ namespace Simple_Sales_System.ViewModels
             ShoesList.Items.Clear();
             ShoesList.BeginUpdate();
             var items = await CreateListViewItemFrom(_shoesList);
-            ImageList images = new ImageList();
-            images.ImageSize = new Size(128,128);
+            ImageList imageList = new ImageList {ImageSize = new Size(128, 128)};
             foreach (var shoes in _shoesList)
             {
-                if(shoes.Image != null)
-                    images.Images.Add(await ImageHelper.FromBytesAsync(shoes.Image));
+                if (shoes.Image != null)
+                    imageList.Images.Add(await ImageHelper.FromBytesAsync(shoes.Image));
+                else
+                    imageList.Images.Add(ImageHelper.DefaultImage);
             }
-            ShoesList.LargeImageList = images;
+            ShoesList.LargeImageList = imageList;
             foreach (var item in items)
             {
                 ShoesList.Items.Add(item);
@@ -61,6 +66,7 @@ namespace Simple_Sales_System.ViewModels
         public async Task SelectItemAsync(int index)
         {
             await DetailsViewModel.LoadAsync(_shoesList[index]);
+            await OrderListViewModel.LoadAsync(_shoesList[index].Model);
         }
 
         private static async Task<IList<ListViewItem>> CreateListViewItemFrom(IList<Shoes> list)
@@ -71,9 +77,10 @@ namespace Simple_Sales_System.ViewModels
                 int imageIndex = 0;
                 foreach (var shoes in list)
                 {
-                    ListViewItem item = new ListViewItem(shoes.Model);
-                    if (shoes.Image != null)
-                        item.ImageIndex = imageIndex++;
+                    ListViewItem item = new ListViewItem(shoes.Model)
+                    {
+                        ImageIndex = imageIndex++
+                    };
                     item.SubItems.Add(shoes.Origin);
                     item.SubItems.Add(shoes.Price.ToString());
                     item.SubItems.Add(shoes.Stocks.ToString());

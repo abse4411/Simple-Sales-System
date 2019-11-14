@@ -50,9 +50,17 @@ namespace Simple_Sales_System.ViewModels
                 EditableItem.Image = shoes.Image;
                 ImageSource = await ImageHelper.FromBytesAsync(shoes.Image);
             }
+            else
+                ClearDetail();
         }
 
-        public async Task EditPicture()
+        public void ClearDetail()
+        {
+            EditableItem = new ShoesViewModel();
+            ImageSource = null;
+        }
+
+        public async Task PickPictureAsync()
         {
             var result = await _filePickerService.OpenImagePickerAsync();
             if (result != null)
@@ -60,6 +68,12 @@ namespace Simple_Sales_System.ViewModels
                 ImageSource = result?.ImageSource as Image;
                 EditableItem.Image = result.ImageBytes;
             }
+        }
+
+        public void ResetPicture()
+        {
+            EditableItem.Image = null;
+            ImageSource = null;
         }
 
         public async Task<bool> SaveAsync()
