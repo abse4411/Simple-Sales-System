@@ -70,7 +70,7 @@ namespace Simple_Sales_System.ViewModels
             bool isSuccessful = false;
             try
             {
-                isSuccessful = await _shoesService.AddShoesAsync(shoes) > 0;
+                isSuccessful = await _shoesService.UpdateShoesAsync(shoes) > 0;
             }
             catch (Exception e)
             {

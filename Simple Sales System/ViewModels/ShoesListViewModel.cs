@@ -3,6 +3,7 @@ using Simple_Sales_System.Data;
 using Simple_Sales_System.Services;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,8 @@ namespace Simple_Sales_System.ViewModels
             ShoesList.BeginUpdate();
             var items = await CreateListViewItemFrom(_shoesList);
             ImageList images = new ImageList();
-            foreach(var shoes in _shoesList)
+            images.ImageSize = new Size(128,128);
+            foreach (var shoes in _shoesList)
             {
                 if(shoes.Image != null)
                     images.Images.Add(await ImageHelper.FromBytesAsync(shoes.Image));
@@ -75,6 +77,7 @@ namespace Simple_Sales_System.ViewModels
                     item.SubItems.Add(shoes.Origin);
                     item.SubItems.Add(shoes.Price.ToString());
                     item.SubItems.Add(shoes.Stocks.ToString());
+                    item.ToolTipText = shoes.Model;
                     result.Add(item);
                 }
                 return result;
