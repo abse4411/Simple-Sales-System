@@ -43,9 +43,10 @@ namespace Simple_Sales_System.ViewModels
             ShoesList.BeginUpdate();
             var items = await CreateListViewItemFrom(_shoesList);
             ImageList images = new ImageList();
-            for(int i=0;i<_shoesList.Count;i++)
+            foreach(var shoes in _shoesList)
             {
-                images.Images.Add(await ImageHelper.FromBytesAsync(_shoesList[i].Image));
+                if(shoes.Image != null)
+                    images.Images.Add(await ImageHelper.FromBytesAsync(shoes.Image));
             }
             ShoesList.LargeImageList = images;
             foreach (var item in items)
@@ -68,10 +69,9 @@ namespace Simple_Sales_System.ViewModels
                 int imageIndex = 0;
                 foreach (var shoes in list)
                 {
-                    ListViewItem item = new ListViewItem(shoes.Model)
-                    {
-                        ImageIndex = imageIndex++
-                    };
+                    ListViewItem item = new ListViewItem(shoes.Model);
+                    if (shoes.Image != null)
+                        item.ImageIndex = imageIndex++;
                     item.SubItems.Add(shoes.Origin);
                     item.SubItems.Add(shoes.Price.ToString());
                     item.SubItems.Add(shoes.Stocks.ToString());
