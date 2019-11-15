@@ -82,12 +82,12 @@ namespace Simple_Sales_System.ViewModels
             const string title = "Warning";
             if (string.IsNullOrWhiteSpace(EditableItem.CustomerName))
             {
-                _dialogService.ShowWarning(title, "CustomerName can not be null");
+                _dialogService.ShowWarning(title, "Name can not be null");
                 return false;
             }
             if (string.IsNullOrWhiteSpace(EditableItem.PhoneNumber))
             {
-                _dialogService.ShowWarning(title, "PhoneNumber can not be null");
+                _dialogService.ShowWarning(title, "Phone Number can not be null");
                 return false;
             }
             if (EditableItem.Quantity <=0)
@@ -97,7 +97,7 @@ namespace Simple_Sales_System.ViewModels
             }
             if (EditableItem.Quantity > _shoes.Stocks)
             {
-                _dialogService.ShowWarning(title, "Quantity must be not great than stocks");
+                _dialogService.ShowWarning(title, "No insufficient stock");
                 return false;
             }
 
