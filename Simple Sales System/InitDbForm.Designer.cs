@@ -68,6 +68,8 @@
             this.EnterBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.EnterBtn.BackColor = System.Drawing.Color.Lime;
             this.EnterBtn.Enabled = false;
+            this.EnterBtn.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.EnterBtn.ForeColor = System.Drawing.Color.White;
             this.EnterBtn.Location = new System.Drawing.Point(679, 165);
             this.EnterBtn.Name = "EnterBtn";
             this.EnterBtn.Size = new System.Drawing.Size(160, 47);
