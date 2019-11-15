@@ -54,11 +54,13 @@ namespace Simple_Sales_System
 
         private void TestBtn_Click(object sender, EventArgs e)
         {
+            EnterBtn.Enabled = false;
             EnterBtn.Enabled = _viewModel.TestConnection();
         }
 
         private async void InitBtn_Click(object sender, EventArgs e)
         {
+            EnterBtn.Enabled = false;
             EnterBtn.Enabled =await _viewModel.InitDbAsync();
         }
 
