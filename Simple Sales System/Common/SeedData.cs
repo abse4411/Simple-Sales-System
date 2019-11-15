@@ -15,7 +15,7 @@ namespace Simple_Sales_System.Common
         private readonly string[] _model = { "ASD-421", "QWE-113", "ZXC-533", "TYU-512", "HJK-131" };
         private readonly string[] _origin = { "China", "US", "UK", "Japan", "South Korea" };
         private readonly double[] _price = { 99d, 1688d, 3216d, 952d, 2123d };
-        private readonly int[] _stocks = { 213, 43, 56, 45, 23 };
+        private readonly int[] _stock = { 213, 43, 56, 45, 23 };
         private readonly string[] _path = { Root + "1.jpg", Root + "2.jpg", Root + "3.jpg", Root + "4.jpg", Root + "5.jpg" };
         private readonly string[] _customerName = { "Alma", "Adela ", "Lily", "Jane", "Elva" };
         private readonly string[] _phoneNumber = { "123456878901", "162456878901", "166658778901", "19758778901", "174752177581" };
@@ -31,7 +31,7 @@ namespace Simple_Sales_System.Common
                     Model = _model[i],
                     Origin = _origin[i],
                     Price = _price[i],
-                    Stocks = _stocks[i],
+                    Stock = _stock[i],
                     Image = File.ReadAllBytes(_path[i])
                 };
                 list.Add(shoes);

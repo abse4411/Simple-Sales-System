@@ -43,7 +43,7 @@ namespace Simple_Sales_System
                 ControlUpdateMode = ControlUpdateMode.OnPropertyChanged
             });
             textBox4.DataBindings.Add(new Binding(nameof(textBox4.Text), _viewModel.ShoesDetails.EditableItem,
-                nameof(_viewModel.ShoesDetails.EditableItem.Stocks),
+                nameof(_viewModel.ShoesDetails.EditableItem.Stock),
                 true, DataSourceUpdateMode.Never)
             {
                 ControlUpdateMode = ControlUpdateMode.OnPropertyChanged

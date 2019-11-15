@@ -56,14 +56,14 @@ namespace TestConsole
             var list=await service.GetShoesListAsync();
             foreach (var shoes in list)
             {
-                Console.WriteLine($"{shoes.Model}\t{shoes.Origin}\t{shoes.Price}\t{shoes.Stocks}");
+                Console.WriteLine($"{shoes.Model}\t{shoes.Origin}\t{shoes.Price}\t{shoes.Stock}");
             }
             Shoes s = new Shoes
             {
                 Model = "DSA-123",
                 Origin = "Japan",
                 Price = 3122.3d,
-                Stocks = 32,
+                Stock = 32,
                 Image = null
             };
             Console.WriteLine("============");
@@ -73,7 +73,7 @@ namespace TestConsole
             //    list = await service.GetShoesListAsync();
             //    foreach (var shoes in list)
             //    {
-            //        Console.WriteLine($"{shoes.Model}\t{shoes.Origin}\t{shoes.Price}\t{shoes.Stocks}");
+            //        Console.WriteLine($"{shoes.Model}\t{shoes.Origin}\t{shoes.Price}\t{shoes.Stock}");
             //    }
             //}
             //else
@@ -81,7 +81,7 @@ namespace TestConsole
             Console.WriteLine("============");
             s=await service.GetShoesAsync("DSA-13");
             if(s!=null)
-                Console.WriteLine($"{s.Model}\t{s.Origin}\t{s.Price}\t{s.Stocks}");
+                Console.WriteLine($"{s.Model}\t{s.Origin}\t{s.Price}\t{s.Stock}");
         }
     }
 }

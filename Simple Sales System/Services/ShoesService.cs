@@ -65,7 +65,7 @@ namespace Simple_Sales_System.Services
         {
             return await Task.Run(() =>
             {
-                string sql = "insert into Shoes values ( @model,@origin,@price,@stocks,@image )";
+                string sql = "insert into Shoes values ( @model,@origin,@price,@stock,@image )";
                 var parameters = CreateParmsFromShoes(shoes);
                 return SqlHelper.ExecuteNonQuery(DbConnectionString.DefaultConnection,sql,CommandType.Text, parameters);
             });
@@ -85,7 +85,7 @@ namespace Simple_Sales_System.Services
         {
             return await Task.Run(() =>
             {
-                string sql = "update Shoes set Origin=@origin,Price=@price,Stocks=@stocks,Image=@image where Model=@model";
+                string sql = "update Shoes set Origin=@origin,Price=@price,Stock=@stock,Image=@image where Model=@model";
                 var parameters = CreateParmsFromShoes(shoes);
                 return SqlHelper.ExecuteNonQuery(DbConnectionString.DefaultConnection, sql, CommandType.Text, parameters);
             });
@@ -98,7 +98,7 @@ namespace Simple_Sales_System.Services
             parameters[0] = new SqlParameter("@model", SqlDbType.VarChar) { Value = shoes.Model };
             parameters[1] = new SqlParameter("@origin", SqlDbType.VarChar) { Value = shoes.Origin };
             parameters[2] = new SqlParameter("@price", SqlDbType.Float) { Value = shoes.Price };
-            parameters[3] = new SqlParameter("@stocks", SqlDbType.Int) { Value = shoes.Stocks };
+            parameters[3] = new SqlParameter("@stock", SqlDbType.Int) { Value = shoes.Stock };
             parameters[4] = new SqlParameter("@image", SqlDbType.VarBinary) { Value = shoes.Image ?? (object)DBNull.Value };
             return parameters;
         }
@@ -110,7 +110,7 @@ namespace Simple_Sales_System.Services
                 Model = reader.GetString(0),
                 Origin = reader.GetString(1),
                 Price = reader.GetDouble(2),
-                Stocks = reader.GetInt32(3),
+                Stock = reader.GetInt32(3),
                 Image = reader.GetSqlBinary(4).IsNull ? null : reader.GetSqlBinary(4).Value
             };
         }

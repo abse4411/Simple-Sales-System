@@ -52,11 +52,11 @@ namespace Simple_Sales_System.ViewModels
                 isSuccessful = await _orderService.AddOrderAsync(order) > 0;
                 if (!isSuccessful)
                     return false;
-                if (order.Quantity == _shoes.Stocks)
+                if (order.Quantity == _shoes.Stock)
                     isSuccessful = await _shoesService.DeleteShoesAsync(_shoes.Model)>0;
                 else
                 {
-                    _shoes.Stocks -= order.Quantity;
+                    _shoes.Stock -= order.Quantity;
                     isSuccessful = await _shoesService.UpdateShoesAsync(_shoes) > 0;
                 }
             }
@@ -95,7 +95,7 @@ namespace Simple_Sales_System.ViewModels
                 _dialogService.ShowWarning(title, "Quantity must be great than zero");
                 return false;
             }
-            if (EditableItem.Quantity > _shoes.Stocks)
+            if (EditableItem.Quantity > _shoes.Stock)
             {
                 _dialogService.ShowWarning(title, "No insufficient stock");
                 return false;

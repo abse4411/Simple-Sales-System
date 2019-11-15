@@ -37,11 +37,11 @@ namespace Simple_Sales_System.ViewModels
             set => Set(ref _price, value);
         }
 
-        private int _stocks;
-        public int Stocks
+        private int _stock;
+        public int Stock
         {
-            get => _stocks;
-            set => Set(ref _stocks, value);
+            get => _stock;
+            set => Set(ref _stock, value);
         }
 
         public override void Merge(ObservableObject source)
@@ -51,7 +51,7 @@ namespace Simple_Sales_System.ViewModels
                 Model = model._model;
                 Origin = model._origin;
                 Price = model._price;
-                Stocks = model._stocks;
+                Stock = model._stock;
                 Image = model._image;
             }
         }
@@ -63,7 +63,7 @@ namespace Simple_Sales_System.ViewModels
                 Model = _model,
                 Origin = _origin,
                 Price = _price,
-                Stocks = _stocks,
+                Stock = _stock,
                 Image = _image
             };
         }

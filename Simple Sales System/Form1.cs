@@ -46,7 +46,7 @@ namespace Simple_Sales_System
                 ControlUpdateMode = ControlUpdateMode.OnPropertyChanged
             });
             textBox4.DataBindings.Add(new Binding(nameof(textBox4.Text), _viewModel.DetailsViewModel.EditableItem,
-                nameof(_viewModel.DetailsViewModel.EditableItem.Stocks),
+                nameof(_viewModel.DetailsViewModel.EditableItem.Stock),
                 true, DataSourceUpdateMode.Never)
             {
                 ControlUpdateMode = ControlUpdateMode.OnPropertyChanged

@@ -83,7 +83,7 @@ namespace Simple_Sales_System.ViewModels
                     };
                     item.SubItems.Add(shoes.Origin);
                     item.SubItems.Add(shoes.Price.ToString());
-                    item.SubItems.Add(shoes.Stocks.ToString());
+                    item.SubItems.Add(shoes.Stock.ToString());
                     item.ToolTipText = shoes.Model;
                     result.Add(item);
                 }

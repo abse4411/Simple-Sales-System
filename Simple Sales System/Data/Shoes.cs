@@ -11,7 +11,7 @@ namespace Simple_Sales_System.Data
         public string Model;
         public string Origin;
         public double Price;
-        public int Stocks;
+        public int Stock;
         public byte[] Image;
     }
 }

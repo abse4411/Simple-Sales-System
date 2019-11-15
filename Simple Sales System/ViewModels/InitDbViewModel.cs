@@ -84,7 +84,7 @@ namespace Simple_Sales_System.ViewModels
             catch (Exception e)
             {
                 _dialogService.ShowException(e);
-                Message = "if the database has not tables, please init the database first";
+                Message = "if the database has no tables, please init the database first";
                 IsEnable = true;
                 return false;
             }
@@ -125,7 +125,7 @@ CREATE TABLE Shoes (
 Model VARCHAR(50)    NOT NULL,
 Origin VARCHAR(50)    NOT NULL,
 Price FLOAT(53)      NOT NULL,
-Stocks INT NOT NULL,
+Stock INT NOT NULL,
 Image VARBINARY(MAX) NULL,
 PRIMARY KEY CLUSTERED(Model ASC));
 CREATE TABLE Orders (

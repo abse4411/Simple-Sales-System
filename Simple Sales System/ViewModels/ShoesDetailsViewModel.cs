@@ -46,7 +46,7 @@ namespace Simple_Sales_System.ViewModels
                 EditableItem.Model = shoes.Model;
                 EditableItem.Origin = shoes.Origin;
                 EditableItem.Price = shoes.Price;
-                EditableItem.Stocks = shoes.Stocks;
+                EditableItem.Stock = shoes.Stock;
                 EditableItem.Image = shoes.Image;
                 ImageSource = await ImageHelper.FromBytesAsync(shoes.Image);
             }
@@ -135,9 +135,9 @@ namespace Simple_Sales_System.ViewModels
                 _dialogService.ShowWarning(title, "Price must be great than 0");
                 return false;
             }
-            if (EditableItem.Stocks <= 0)
+            if (EditableItem.Stock <= 0)
             {
-                _dialogService.ShowWarning(title, "Stocks must be great than 0");
+                _dialogService.ShowWarning(title, "Stock must be great than 0");
                 return false;
             }
             return true;
