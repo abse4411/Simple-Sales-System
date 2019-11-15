@@ -11,7 +11,7 @@ namespace Simple_Sales_System.Common
 {
     public static class ImageHelper
     {
-        private static Image _defaultImage = Image.FromFile("./image.png");
+        private static Image _defaultImage;
         public static async Task<Image> FromBytesAsync(byte[] bytes)
         {
             return await Task.Run(() =>
@@ -35,7 +35,7 @@ namespace Simple_Sales_System.Common
                 if (_defaultImage == null)
                     try
                     {
-                        _defaultImage = Image.FromFile("./image.png");
+                        _defaultImage = Image.FromFile("./Assets/default.png");
                     }
                     catch (Exception e)
                     {

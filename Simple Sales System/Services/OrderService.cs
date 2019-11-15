@@ -22,7 +22,7 @@ namespace Simple_Sales_System.Services
             return await Task.Run(() =>
             {
                 string findMaxSql = "select Max(Id) from Orders";
-                object maxId = SqlHelper.ExecuteScalar(DbConstants.ConnectionString, findMaxSql, CommandType.Text);
+                object maxId = SqlHelper.ExecuteScalar(DbConnectionString.DevelopmentConnection, findMaxSql, CommandType.Text);
                 int id=0;
                 if(maxId!=null && Int32.TryParse(maxId.ToString(), out id))
                 {
@@ -31,7 +31,7 @@ namespace Simple_Sales_System.Services
                 order.Id = id;
                 string sql = "insert into Orders values ( @id,@model,@customerName,@phoneNumber,@quantity )";
                 var parameters = CreateParmsFromOrder(order);
-                return SqlHelper.ExecuteNonQuery(DbConstants.ConnectionString, sql, CommandType.Text, parameters);
+                return SqlHelper.ExecuteNonQuery(DbConnectionString.DevelopmentConnection, sql, CommandType.Text, parameters);
             });
         }
 
@@ -42,7 +42,7 @@ namespace Simple_Sales_System.Services
                 string sql = "select * from Orders where Model=@model";
                 SqlParameter modelParam = new SqlParameter("@model", SqlDbType.VarChar) { Value = model };
                 IList<Order> list = new List<Order>();
-                using (SqlConnection connection = new SqlConnection(DbConstants.ConnectionString))
+                using (SqlConnection connection = new SqlConnection(DbConnectionString.DevelopmentConnection))
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
@@ -72,7 +72,7 @@ namespace Simple_Sales_System.Services
             {
                 string sql = "select * from Orders";
                 IList<Order> list = new List<Order>();
-                using (SqlConnection connection = new SqlConnection(DbConstants.ConnectionString))
+                using (SqlConnection connection = new SqlConnection(DbConnectionString.DevelopmentConnection))
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))

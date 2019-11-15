@@ -17,7 +17,7 @@ namespace Simple_Sales_System.Services
                 string sql = "select * from Shoes where Model=@model";
                 SqlParameter model = new SqlParameter("@model", SqlDbType.VarChar) { Value = id };
                 Shoes shoes = null;
-                using (SqlConnection connection = new SqlConnection(DbConstants.ConnectionString))
+                using (SqlConnection connection = new SqlConnection(DbConnectionString.DevelopmentConnection))
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
@@ -43,7 +43,7 @@ namespace Simple_Sales_System.Services
             {
                 string sql = "select * from Shoes";
                 IList<Shoes> list = new List<Shoes>();
-                using (SqlConnection connection = new SqlConnection(DbConstants.ConnectionString))
+                using (SqlConnection connection = new SqlConnection(DbConnectionString.DevelopmentConnection))
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(sql, connection))
@@ -67,7 +67,7 @@ namespace Simple_Sales_System.Services
             {
                 string sql = "insert into Shoes values ( @model,@origin,@price,@stocks,@image )";
                 var parameters = CreateParmsFromShoes(shoes);
-                return SqlHelper.ExecuteNonQuery(DbConstants.ConnectionString,sql,CommandType.Text, parameters);
+                return SqlHelper.ExecuteNonQuery(DbConnectionString.DevelopmentConnection,sql,CommandType.Text, parameters);
             });
         }
 
@@ -77,7 +77,7 @@ namespace Simple_Sales_System.Services
             {
                 string sql = "delete from Shoes where Model=@model";
                 SqlParameter model = new SqlParameter("@model", SqlDbType.VarChar) { Value = id };
-                return SqlHelper.ExecuteNonQuery(DbConstants.ConnectionString, sql, CommandType.Text, model);
+                return SqlHelper.ExecuteNonQuery(DbConnectionString.DevelopmentConnection, sql, CommandType.Text, model);
             });
         }
 
@@ -87,7 +87,7 @@ namespace Simple_Sales_System.Services
             {
                 string sql = "update Shoes set Origin=@origin,Price=@price,Stocks=@stocks,Image=@image where Model=@model";
                 var parameters = CreateParmsFromShoes(shoes);
-                return SqlHelper.ExecuteNonQuery(DbConstants.ConnectionString, sql, CommandType.Text, parameters);
+                return SqlHelper.ExecuteNonQuery(DbConnectionString.DevelopmentConnection, sql, CommandType.Text, parameters);
             });
         }
 

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ImageHelper.cs" />
+    <Compile Include="Common\SeedData.cs" />
     <Compile Include="Common\SqlHelper.cs" />
     <Compile Include="Data\Order.cs" />
     <Compile Include="Data\Shoes.cs" />
@@ -56,6 +57,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="InitDbForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InitDbForm.Designer.cs">
+      <DependentUpon>InitDbForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,15 +71,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Common\DbConstants.cs" />
+    <Compile Include="Common\DbConnectionString.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\FilePickerService.cs" />
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Services\IFilePickerService.cs" />
+    <Compile Include="Services\InitDbViewModel.cs" />
     <Compile Include="Services\IOrderService.cs" />
     <Compile Include="Services\IShoesService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\ShoesService.cs" />
+    <Compile Include="ViewModels\InitDbViewModel.cs" />
     <Compile Include="ViewModels\ObservableObject.cs" />
     <Compile Include="ViewModels\OrderListViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
@@ -82,6 +91,9 @@
     <Compile Include="ViewModels\ShoesViewModel.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InitDbForm.resx">
+      <DependentUpon>InitDbForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderForm.resx">
       <DependentUpon>OrderForm.cs</DependentUpon>
@@ -109,7 +121,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="image.png">
+    <Content Include="Assets\default.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
