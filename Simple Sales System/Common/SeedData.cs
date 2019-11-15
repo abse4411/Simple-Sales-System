@@ -24,24 +24,17 @@ namespace Simple_Sales_System.Common
         public IList<Shoes> GetShoesList()
         {
             IList<Shoes> list = new List<Shoes>();
-            try
+            for (int i = 0; i < _model.Length; i++)
             {
-                for (int i = 0; i < _model.Length; i++)
+                var shoes = new Shoes
                 {
-                    var shoes = new Shoes
-                    {
-                        Model = _model[i],
-                        Origin = _origin[i],
-                        Price = _price[i],
-                        Stocks = _stocks[i],
-                        Image = File.ReadAllBytes(_path[i])
-                    };
-                    list.Add(shoes);
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
+                    Model = _model[i],
+                    Origin = _origin[i],
+                    Price = _price[i],
+                    Stocks = _stocks[i],
+                    Image = File.ReadAllBytes(_path[i])
+                };
+                list.Add(shoes);
             }
             return list;
         }
@@ -58,7 +51,7 @@ namespace Simple_Sales_System.Common
                         Model = _model[j],
                         CustomerName = _customerName[i],
                         PhoneNumber = _phoneNumber[i],
-                        Quantity = _quantity[j]+i+j
+                        Quantity = _quantity[j] + i + j
                     };
                     list.Add(order);
                 }

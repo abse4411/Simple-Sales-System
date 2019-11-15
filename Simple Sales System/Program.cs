@@ -16,7 +16,9 @@ namespace Simple_Sales_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            InitDbForm form=new InitDbForm();
+            if(form.ShowDialog()==DialogResult.Yes)
+                Application.Run(new Form1());
         }
     }
 }
