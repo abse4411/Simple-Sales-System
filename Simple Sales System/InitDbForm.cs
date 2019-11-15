@@ -67,5 +67,10 @@ namespace Simple_Sales_System
             this.DialogResult = DialogResult.Yes;
             this.Close();
         }
+
+        private void CreditsBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Icons made by Smashicons from www.flaticon.com", "Credits", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
